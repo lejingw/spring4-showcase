@@ -36,16 +36,23 @@ public class UserService2Test {
 
     @Test
     public void testCache() {
-        Long id = 1L;
+        Long id = 2L;
         User user = new User(id, "zhang", "zhang@gmail.com");
         userService.save(user);
 
         //一定要复制一个 否则cache了(因为同一个JVM测试的)
-        User user2 = new User(id, "zhang2", "zhang@gmail.com");
+        User user2 = new User(id, "zhang3", "zhang@gmail.com");
         userService.conditionUpdate(user2);
+//        user.setUsername("zhang3");
+//        userService.conditionUpdate(user);
 
         userService.findById(id);
-        userService.findByUsername("zhang2");
+        userService.findByUsername("zhang3");
+
+        System.out.println(userCache.get(2L));
+        System.out.println(userCache.get("zhang").get());
+        System.out.println(userCache.get("zhang3").get());
+        System.out.println(userCache.get("zhang@gmail.com").get());
 
     }
 

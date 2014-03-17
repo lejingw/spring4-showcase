@@ -42,5 +42,6 @@ public class UserServiceTest {
         userService.save(user);
         Assert.assertNotNull(userCache.get(id).get());
         userService.findById(id);
+        userService.save(user);
     }
 }
