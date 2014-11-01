@@ -256,7 +256,7 @@ public class ServerControllerTest {
 
     @Test
     public void testNestedProperty() {
-        List<User> userlist = new ArrayList<>();
+        List<User> userlist = new ArrayList<User>();
         User user1 = new User();
         user1.setId(1L);
         user1.setName("zhang");
